@@ -1,15 +1,12 @@
-import React, { useState, Fragment, useEffect } from "react";
+import React, { useState, Fragment } from "react";
+import useDocumentTitle from "./useDocumentTitle";
 
 function Counter(props) {
   const [count, setCount] = useState(0);
   const [name, setName] = useState("");
 
-  useEffect(() => {
-    document.title = `${name} clicked ${count} times`;
-    return () => {
-      console.log("Connection reset");
-    };
-  }, [count, name]);
+  useDocumentTitle(`${name} clicked for ${count} times`);
+
   return (
     <Fragment>
       <input type="text" onChange={(e) => setName(e.target.value)} />
